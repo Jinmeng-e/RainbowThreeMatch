@@ -8,7 +8,8 @@ public class Block : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandle
 {
     [SerializeField] Image icon;
     bool isVerticalMove = false;
-    float lastMoveValue = 0;
+    float addedMoveValue = 0f;
+    float lastMoveValue = 0f;
     public Color Color => color;
 
     Color color = Color.white;
@@ -34,16 +35,26 @@ public class Block : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandle
 
     void MoveVertical(float v)
     {
-        
+        addedMoveValue += v;
+        lastMoveValue = v;
+        if (addedMoveValue > PositionHelper.instance.vHarf)
+        {
+            OnMove();
+        }
     }
     void MoveHorizontal(float h)
     {
-
+        addedMoveValue += h;
+        lastMoveValue = h;
+        if(addedMoveValue > PositionHelper.instance.hHarf)
+        {
+            OnMove();
+        }
     }
     void OnMove()
     {
-        SetPosition();
-
+        addedMoveValue = 0;
+        lastMoveValue = 0;
     }
 
 

@@ -5,9 +5,10 @@ using System.Collections.Generic;
 public class PositionHelper : MonoBehaviour
 {
     public static PositionHelper instance { get; set; }
-
-    [SerializeField] List<Transform> posX;
-    [SerializeField] List<Transform> posY;
+    public float vHarf;
+    public float hHarf;
+    [SerializeField] List<Transform> posV;
+    [SerializeField] List<Transform> posH;
 
 
     private void Awake()
@@ -16,13 +17,15 @@ public class PositionHelper : MonoBehaviour
         {
             instance = this;
         }
+        vHarf = posV[0].position.x - posV[1].position.x;
+        hHarf = posH[0].position.y - posH[1].position.y;
     }
 
     public Vector2 GetPos(int x, int y)
     {
         var vec2 = new Vector2();
-        vec2.x = posX[x].position.x;
-        vec2.y = posY[y].position.y;
+        vec2.x = posV[x].position.x;
+        vec2.y = posH[y].position.y;
         return vec2;
     }
 }
