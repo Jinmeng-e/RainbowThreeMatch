@@ -10,10 +10,11 @@ public class ColorSet
 
 public class ColorHelper : MonoBehaviour
 {
-    public static ColorHelper instance;
+    public static ColorHelper Instance => instance;
 
     [SerializeField]
     List<Color> colors = null;
+    static ColorHelper instance;
 
     private void Awake()
     {
@@ -43,10 +44,18 @@ public class ColorHelper : MonoBehaviour
 
     public Color GetColor(int index)
     {
-        if (colors.Count <= index)
+        if(Game.instance.MaxColorCount < index)
         {
-            index -= colors.Count;
+            index -= Game.instance.MaxColorCount;
         }
         return colors[index];
+    }
+    public int GetColorIndex(int index)
+    {
+        if (Game.instance.MaxColorCount < index)
+        {
+            index -= Game.instance.MaxColorCount;
+        }
+        return index;
     }
 }
