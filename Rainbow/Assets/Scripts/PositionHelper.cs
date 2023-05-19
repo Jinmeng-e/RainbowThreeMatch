@@ -7,6 +7,9 @@ public class PositionHelper : MonoBehaviour
     public static PositionHelper instance { get; set; }
     public float vHarf = 0;
     public float hHarf = 0;
+
+    public int YCount => posH.Count;
+    public int XCount => posV.Count;
     [SerializeField] List<Transform> posV;
     [SerializeField] List<Transform> posH;
 

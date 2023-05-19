@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -7,6 +8,7 @@ public class BlockData
     public int x;
     public int y;
     public int colorIndex;
+    public int dropHeight;
 }
 [System.Serializable]
 public class HBlocks
@@ -23,16 +25,37 @@ public class HBlocks
             blocks[i].SetPosition(index,y);
         }
     }
-    public void Fill(int[] data)
+    public void FillData(BlockData[] data)
     {
         for(int i = 0; i < blocks.Length;++i)
         {
-            blocks[i].InitColor(data[i]);
+            var index = data[i].colorIndex;
+            var height = data[i].dropHeight;
+            blocks[i].InitColorData(index);
+            blocks[i].Show(height);
         }
     }
-    public void ShowDown()
-    {
 
+    internal void Pop(BlockData[] data)
+    {
+        for(int i = 0; i < data.Length; ++i)
+        {
+            if(data[i].colorIndex == 0)
+            {
+                blocks[i].Pop();
+            }
+        }
+    }
+    internal void ChangeColor(int[] data)
+    {
+        for (int i = 0; i < blocks.Length; ++i)
+        {
+            if (data[i] != 0 && blocks[i].colorIndex != data[i])
+            {
+                blocks[i].InitColorData(data[i]);
+                blocks[i].ChangeColor();
+            }
+        }
     }
 
     //debug
@@ -55,7 +78,8 @@ public class Game : MonoBehaviour
 {
     public static Game instance;
     public int MaxColorCount => grade + 3;
-    int grade = 0;
+    [SerializeField] Image screen;
+    [SerializeField] int grade;
     int[,] boardData;
     public HBlocks[] blocks;
 
@@ -65,9 +89,8 @@ public class Game : MonoBehaviour
         {
             instance = this;
         }
-        grade = 0;
-        boardData = new int[7, 7];
-        for(int i = 0; i < 7; ++i)
+        boardData = new int[5, 7];
+        for(int i = 0; i < 5; ++i)
         {
             for (int j = 0; j < 7; ++j)
             {
@@ -79,28 +102,29 @@ public class Game : MonoBehaviour
             blocks[i].Init(i);
         }
     }
-    void Start()
+    IEnumerator Start()
     {
-        FillData();
+        //FillData();
+        yield return new WaitUntil(() => ColorHelper.Instance.IsColorFilled);
+        InitData();
+        yield return null;
+        screen.gameObject.SetActive(false);
     }
-    public bool Swap(BlockData a, BlockData b)
+    public void Check((int,int) block)
     {
-        var temp = a.colorIndex;
-        a.colorIndex = b.colorIndex;
-        b.colorIndex = temp;
+        Debug.Log($"[Game] : CHECK BLACK :: {block.Item1}, {block.Item2}");
 
-        boardData[a.x, a.y] = a.colorIndex;
-        boardData[b.x, b.y] = b.colorIndex;
-        
-
-        return CheckMatch();
+        if (CheckMatch(block))
+        {
+            StartCoroutine(IEPop());
+        }
     }
     public void CheckTest()
     {
         Debug.Log("[Game] : TEST CHECK BLACK");
         if (CheckMatch())
         {
-            ChangeColor();
+            ChangeColorTest();
         }
     }
     public void FillTest()
@@ -109,10 +133,11 @@ public class Game : MonoBehaviour
 
         FillData();
     }
-    void ChangeColor()
+    void ChangeColorTest()
     {
+        Debug.Log($"[GAME] : ChangeColor ::::::::::");
         var changed = new List<string>();
-        for(var i = 0; i < 7; ++i)
+        for(var i = 0; i < 5; ++i)
         {
             var x = i;
             for (var j = 0; j < 7; ++j)
@@ -130,7 +155,7 @@ public class Game : MonoBehaviour
                             boardData[x - 1, y] = ColorHelper.Instance.GetColorIndex(boardData[x - 1, y] + 1);
                         }
                     }
-                    if(x < 6 && boardData[x + 1, y] != 0)
+                    if(x < 4 && boardData[x + 1, y] != 0)
                     {
                         if (!changed.Contains($"{x + 1}{y}"))
                         {
@@ -161,7 +186,7 @@ public class Game : MonoBehaviour
             }
         }
 
-        for (var i = 0; i < 7; ++i)
+        for (var i = 0; i < 5; ++i)
         {
             var data = new int[7];
             for (var j = 6; j >= 0; --j)
@@ -171,6 +196,69 @@ public class Game : MonoBehaviour
             blocks[i].CheckTest(data);
         }
     }
+    void ChangeColor()
+    {
+        Debug.Log($"[GAME] : ChangeColor ::::::::::");
+        var changed = new List<string>();
+        for (var i = 0; i < 5; ++i)
+        {
+            var x = i;
+            for (var j = 0; j < 7; ++j)
+            {
+                var y = j;
+
+                if (boardData[x, y] == 0)
+                {
+                    if (x > 0 && boardData[x - 1, y] != 0)
+                    {
+                        if (!changed.Contains($"{x - 1}{y}"))
+                        {
+                            Debug.Log($"CHANGED :: {x - 1} : {y}");
+                            changed.Add($"{x - 1}{y}");
+                            boardData[x - 1, y] = ColorHelper.Instance.GetColorIndex(boardData[x - 1, y] + 1);
+                        }
+                    }
+                    if (x < 4 && boardData[x + 1, y] != 0)
+                    {
+                        if (!changed.Contains($"{x + 1}{y}"))
+                        {
+                            Debug.Log($"CHANGED :: {x + 1} : {y}");
+                            changed.Add($"{x + 1}{y}");
+                            boardData[x + 1, y] = ColorHelper.Instance.GetColorIndex(boardData[x + 1, y] + 1);
+                        }
+                    }
+                    if (y > 0 && boardData[x, y - 1] != 0)
+                    {
+                        if (!changed.Contains($"{x}{y - 1}"))
+                        {
+                            Debug.Log($"CHANGED :: {x} : {y - 1}");
+                            changed.Add($"{x}{y - 1}");
+                            boardData[x, y - 1] = ColorHelper.Instance.GetColorIndex(boardData[x, y - 1] + 1);
+                        }
+                    }
+                    if (y < 6 && boardData[x, y + 1] != 0)
+                    {
+                        if (!changed.Contains($"{x}{y + 1}"))
+                        {
+                            Debug.Log($"CHANGED :: {x} : {y + 1}");
+                            changed.Add($"{x}{y + 1}");
+                            boardData[x, y + 1] = ColorHelper.Instance.GetColorIndex(boardData[x, y + 1] + 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        for (var i = 0; i < 5; ++i)
+        {
+            var data = new int[7];
+            for (var j = 6; j >= 0; --j)
+            {
+                data[j] = boardData[i, j];
+            }
+            blocks[i].ChangeColor(data);
+        }
+    }
 
     bool CheckMatch()
     {
@@ -178,82 +266,267 @@ public class Game : MonoBehaviour
 
         // Check vertical matches
 
-        var temp = new int[7,7];
+        var temp = new int[5,7];
 
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 5; i++)
         {
             for (int j = 0; j < 7; j++)
             {
                 temp[i,j] = boardData[i, j];
             }
         }
-                
+
+        List<List<(int, int)>> connectedComponents = new List<List<(int, int)>>();
+
+        for (int i = 0; i < 5; ++i)
+        {
+            for (int j = 0; j < 7; ++j)
+            {
+                if (boardData[i, j] != 0)
+                {
+                    List<(int, int)> component = new List<(int, int)>();
+                    DFS(boardData[i,j], i, j, ref component);
+                    connectedComponents.Add(component);
+                }
+            }
+        }
+
+
+        foreach (var component in connectedComponents)
+        {
+            if (component.Count >= 3)
+            {
+                isMatched = true;
+                foreach (var item in component)
+                {
+                    boardData[item.Item1, item.Item2] = 0;
+                }
+            }
+        }
+
+
+        for (int i = 0; i < 5; i++)
+        {
+            BlockData[] data = new BlockData[7];
+
+            for (int j = 6; j >= 0; j--)
+            {
+                BlockData block = new BlockData();
+                block.x = i;
+                block.y = j;
+                block.colorIndex = boardData[i, j];
+                block.dropHeight = 0;
+                data[j] = block;
+            }
+            blocks[i].Pop(data);
+        }
+
+
+        // line matching
+        //for (int i = 0; i < 3; i++)
+        //{
+        //    for (int j = 0; j < 7; j++)
+        //    {
+        //        Debug.Log($"{i}{j} : {boardData[i, j]} : {boardData[i + 1, j]} : {boardData[i + 2, j]}");
+        //        if (boardData[i, j] == boardData[i + 1, j] && boardData[i, j] == boardData[i + 2, j])
+        //        {
+        //            temp[i, j] = 0;
+        //            temp[i + 1, j] = 0;
+        //            temp[i + 2, j] = 0;
+        //            isMatched = true;
+        //        }
+        //    }
+        //}
+        //for (int j = 0; j < 5; j++)
+        //{
+        //    for (int i = 0; i < 5; i++)
+        //    {
+        //        Debug.Log($"{i}{j} : {boardData[i, j]} : {boardData[i, j + 1]} : {boardData[i, j + 2]}");
+        //        if (boardData[i, j] == boardData[i, j + 1] && boardData[i, j] == boardData[i, j + 2])
+        //        {
+        //            temp[i, j] = 0;
+        //            temp[i, j + 1] = 0;
+        //            temp[i, j + 2] = 0;
+        //            isMatched = true;
+        //        }
+        //    }
+        //}
+
+        //boardData = temp;
+
+        //for (int i = 0; i < 5; i++)
+        //{
+        //    BlockData[] data = new BlockData[7];
+
+        //    for (int j = 6; j >= 0; j--)
+        //    {
+        //        BlockData block = new BlockData();
+        //        block.x = i;
+        //        block.y = j;
+        //        block.colorIndex = boardData[i, j];
+        //        block.dropHeight = 0;
+        //        data[j] = block;
+        //    }
+        //    blocks[i].Pop(data);
+        //}
+
+
+        return isMatched;
+    }
+
+    bool CheckMatch((int,int) blockIndex)
+    {
+
+        bool isMatched = false;
+
+        // Check vertical matches
+
+        var temp = new int[5, 7];
 
         for (int i = 0; i < 5; i++)
         {
             for (int j = 0; j < 7; j++)
             {
-                Debug.Log($"{i}{j} : {boardData[i, j]} : {boardData[i + 1, j]} : {boardData[i + 2, j]}");
-                if (boardData[i, j] == boardData[i + 1, j] && boardData[i, j] == boardData[i + 2, j])
-                {
-                    temp[i, j] = 0;
-                    temp[i + 1, j] = 0;
-                    temp[i + 2, j] = 0;
-                    isMatched = true;
-                }
-            }
-        }
-        for (int j = 0; j < 5; j++)
-        {
-            for (int i = 0; i < 7; i++)
-            {
-                Debug.Log($"{i}{j} : {boardData[i, j]} : {boardData[i, j + 1]} : {boardData[i, j + 2]}");
-                if (boardData[i, j] == boardData[i, j + 1] && boardData[i, j] == boardData[i, j + 2])
-                {
-                    temp[i, j] = 0;
-                    temp[i, j + 1] = 0;
-                    temp[i, j + 2] = 0;
-                    isMatched = true;
-                }
+                temp[i, j] = boardData[i, j];
             }
         }
 
-        boardData = temp;
+        List<(int, int)> component = new List<(int, int)>();
+        DFS(boardData[blockIndex.Item1, blockIndex.Item2], blockIndex.Item1, blockIndex.Item2, ref component);
+
+        if (component.Count >= 3)
+        {
+            isMatched = true;
+            foreach (var item in component)
+            {
+                boardData[item.Item1, item.Item2] = 0;
+            }
+        }
+
+
+        for (int i = 0; i < 5; i++)
+        {
+            BlockData[] data = new BlockData[7];
+
+            for (int j = 6; j >= 0; j--)
+            {
+                BlockData block = new BlockData();
+                block.x = i;
+                block.y = j;
+                block.colorIndex = boardData[i, j];
+                block.dropHeight = 0;
+                data[j] = block;
+            }
+            blocks[i].Pop(data);
+        }
 
         return isMatched;
     }
 
+    // Function to check if the current block is part of a connected group
+    void DFS(int matchValue, int i, int j, ref List<(int, int)> component)
+    {
+        if (i < 0 || i >= 5 || j < 0 || j >= 7 || boardData[i, j] <= 0 || component.Contains((i, j)) || boardData[i, j] != matchValue)
+        {
+            return;
+        }
+
+        component.Add((i, j));
+        int value = boardData[i, j];
+
+        DFS(matchValue, i - 1, j, ref component);
+        DFS(matchValue, i + 1, j, ref component);
+        DFS(matchValue, i, j - 1, ref component);
+        DFS(matchValue, i, j + 1, ref component);
+    }
+
+
     void FillData()
     {
-        Debug.Log($"[Game] : FillData");
-        // 아래 번호가 비어 있으면 해당 줄 밑으로 당겨서 채움
-        for (int i = 0; i < 7; ++i)
+        Debug.Log("[Game] : FillData");
+        int maxColorCount = MaxColorCount;
+
+        for (int i = 0; i < 5; i++)
         {
-            var data = new int[7];
-            for (int j = 6; j >= 0; --j)
+            BlockData[] data = new BlockData[7];
+            var dropCount = 0;
+            for (int j = 6; j >= 0; j--)
             {
-                if (boardData[i, j] == 0)
+                if (boardData[i, j] == 0) // when empty
                 {
-                    var index = j;
-                    while(boardData[i,index] == 0 && index > 0)
+                    int index = j;
+
+                    while (index >= 0 && boardData[i, index] == 0) // back up to empty index
                     {
-                        --index;
+                        index--;
+                        dropCount++;
                     }
-                    if(boardData[i, index] > 0)
+
+                    if (index >= 0 && boardData[i, index] > 0) // Drop from top to bottom if the top is filled with something
                     {
-                        boardData[i, j] = boardData[i, index];
-                        boardData[i, index] = 0;
+                        for (int dropIndex = index; dropIndex >= 0; dropIndex--)
+                        {
+                            boardData[i, j - (index - dropIndex)] = boardData[i, dropIndex];
+                        }
+
+                        for (int others = j - (index + 1); others >= 0; others--)
+                        {
+                            boardData[i, others] = Random.Range(1, maxColorCount + 1);
+                        }
                     }
                     else
                     {
-                        var count = MaxColorCount;
-                        boardData[i, j] = Random.Range(1, count+1);
+                        boardData[i, j] = Random.Range(1, maxColorCount + 1);
                     }
                 }
-                data[j] = boardData[i, j];
-                Debug.Log($"FILL : {i}{j} : {boardData[i, j]}");
+
+                BlockData block = new BlockData();
+                block.x = i;
+                block.y = j;
+                block.colorIndex = boardData[i, j];
+                block.dropHeight = dropCount;
+                data[j] = block;
+
+                Debug.Log($"FILL: {i}, {j}: {boardData[i, j]} :: {dropCount}");
             }
-            blocks[i].Fill(data);
+
+            blocks[i].FillData(data);
         }
+    }
+
+    void InitData()
+    {
+        Debug.Log("[GAME] : InitData()");
+
+        var count = MaxColorCount;
+        for (var i = 0; i < 5; ++i)
+        {
+            var data = new BlockData[7];
+
+            for (var j = 6; j >= 0; --j)
+            {
+                boardData[i, j] = Random.Range(1, count + 1);
+
+                var block = new BlockData();
+                block.x = i;
+
+                block.y = j;
+                block.colorIndex = boardData[i, j];
+                block.dropHeight = 7;
+                data[j] = block;
+            }
+            blocks[i].FillData(data);
+        }
+    }
+
+    IEnumerator IEPop()
+    {
+        yield return null;
+
+        ChangeColor();
+        yield return new WaitForSeconds(0.5f);
+
+        FillData();
+
     }
 }

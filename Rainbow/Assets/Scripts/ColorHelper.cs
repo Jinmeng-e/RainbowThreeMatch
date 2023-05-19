@@ -15,6 +15,7 @@ public class ColorHelper : MonoBehaviour
     [SerializeField]
     List<Color> colors = null;
     static ColorHelper instance;
+    public bool IsColorFilled => colors.Count >= Game.instance.MaxColorCount;
 
     private void Awake()
     {
@@ -44,6 +45,7 @@ public class ColorHelper : MonoBehaviour
 
     public Color GetColor(int index)
     {
+        Debug.Log(index);
         if(Game.instance.MaxColorCount < index)
         {
             index -= Game.instance.MaxColorCount;

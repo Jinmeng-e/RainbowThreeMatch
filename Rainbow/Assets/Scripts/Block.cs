@@ -2,11 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using TMPro;
+using System;
 
-public class Block : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
+public class Block : MonoBehaviour
 {
+
+    [SerializeField] Animator anim;
+    [SerializeField] Button btn;
+    [SerializeField] string strDropAnim = "drop";
+    [SerializeField] string strHeightAnim = "height";
+    [SerializeField] string strDroppedAnim = "dropped";
+    [SerializeField] string strPopAnim = "pop";
+    [SerializeField] float dropTime = 1f;
     [SerializeField] Image icon;
     [SerializeField] TextMeshProUGUI txt;// 임시 
     bool isVerticalMove = false;
@@ -28,66 +36,19 @@ public class Block : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandle
         }
     }
 
-    void MoveVertical(float v)
-    {
-        addedMoveValue += v;
-        lastMoveValue = v;
-        var pos = icon.transform.position;
-        pos.x = transform.position.x + addedMoveValue;
-        if (addedMoveValue > PositionHelper.instance.vHarf && data.y > 0)
-        {
-            // swap
-            var pre = data;
-            data.y--;
-            Game.instance.Swap(pre, data);
-        }
-        if(addedMoveValue < PositionHelper.instance.vHarf && data.y < 6)
-        {
-            // swap
-            var pre = data;
-            data.y++;
-            Game.instance.Swap(pre, data);
-        }
-        OnMove();
-    }
-    void MoveHorizontal(float h)
-    {
-        addedMoveValue += h;
-        lastMoveValue = h;
-        var pos = icon.transform.position;
-        pos.x = transform.position.y + addedMoveValue;
-        if (addedMoveValue > PositionHelper.instance.hHarf && data.x > 0)
-        {
-            var pre = data;
-            data.x++;
-            Game.instance.Swap(pre, data);
-        }
-        if(addedMoveValue < PositionHelper.instance.hHarf && data.x < 6)
-        {
-            var pre = data;
-            data.x--;
-            Game.instance.Swap(pre, data);
-        }
-        OnMove();
-    }
-    void OnMove()
-    {
-        addedMoveValue = 0;
-        lastMoveValue = 0;
-        // back to position;
-        StartCoroutine(MoveToIndex());
 
-    }
-    IEnumerator MoveToIndex()
+    private void Awake()
     {
-        yield return null;
-        var dest = PositionHelper.instance.GetPos((int)data.x, (int)data.y);
-
-        isLocked = false;
+        btn = GetComponent<Button>();
+        btn.onClick.AddListener(onClick);
     }
 
 
-
+    void onClick()
+    {
+        Debug.Log($"[BLOCK] : onclick :: {data.x},{data.y}");
+        Game.instance.Check((data.x, data.y));
+    }
     //Position
     public void SetPosition(int x, int y)
     {
@@ -99,20 +60,13 @@ public class Block : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandle
         data.y = y;
     }
     //Color
-    public void InitColor(int index)
+    public void InitColorData(int index)
     {
         if (data == null)
         {
             data = new BlockData();
         }
         data.colorIndex = index;
-
-        this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
-
-        if (icon == null) { icon = GetComponentInChildren<Image>(); }
-        if (icon != null) { icon.color = this.color; }
-
-        DebugText(index);
     }
     public void ChangeColor()
     {
@@ -120,58 +74,72 @@ public class Block : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandle
 
         this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
 
-        if (icon == null) { icon = GetComponentInChildren<Image>(); }
+        if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
         if (icon != null) { icon.color = this.color; }
     }
-    
-
-    //Move
-    public void OnBeginDrag(PointerEventData eventData)
+    internal void Pop()
     {
-        Debug.Log($"[Block]{data.x},{data.y} : OnBeginDrag");
-        if (isLocked) { return; }
-        isLocked = true;
-        isVerticalMove = eventData.delta.x > eventData.delta.y;
-        Debug.Log($"[Block]{data.x},{data.y} : OnBeginDrag :: IsVertical ? {isVerticalMove}");
-        if (isVerticalMove)
-        {
-            MoveVertical(eventData.delta.y);
-        }
-        else
-        {
-            MoveHorizontal(eventData.delta.x);
-        }
-    }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        Debug.Log($"[Block]{data.x},{data.y} : OnDrag");
-        //if (isVerticalMove)
-        //{
-        //    MoveVertical(eventData.delta.y);
-        //}
-        //else
-        //{
-        //    MoveHorizontal(eventData.delta.x);
-        //}
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        Debug.Log($"[Block]{data.x},{data.y} : OnDrop");
-        //if (isLocked) { return; }
+        data.colorIndex = 0;
+        anim.SetFloat(strHeightAnim, 0);
+        anim.SetTrigger(strPopAnim);
     }
 
     //Debug
     public void TestCheck()
     {
-        if (icon == null) { icon = GetComponentInChildren<Image>(); }
+        if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
         if (icon != null) { icon.color = Color.black; }
         txt.color = Color.white;
     }
     public void TestChangeCheck()
     {
-        if (icon == null) { icon = GetComponentInChildren<Image>(); }
+        if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
         if (icon != null) { icon.color = Color.gray; }
+    }
+    public void Show(int height)
+    {
+        Debug.Log($"[Block] : Show : {gameObject.name} ,HEIGHT:: {height}");
+        if(anim == null)
+        {
+            anim = GetComponent<Animator>();
+        }
+        if(anim != null && height > 0)
+        {
+            StartCoroutine(IEDrop(height));
+        }
+    }
+
+    IEnumerator IEDrop(int height)
+    {
+        // 1 - 7  // 0.875 - 0.125
+        // set height
+        var HValue = (float)(8 - height) * 0.125f;
+        anim.SetFloat(strHeightAnim, HValue);
+        yield return null;
+
+        anim.SetTrigger(strDropAnim);
+
+        // set color
+        this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
+
+        if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
+        if (icon != null) { icon.color = this.color; }
+
+        // set text
+        DebugText(data.colorIndex);
+
+        // animation
+        float timeValue = HValue * dropTime;
+        Debug.Log($"[Block] : HEIGHT :: {height} :: HVALUE :: {HValue} :: timevalue {timeValue}");
+
+        while (dropTime > timeValue)
+        {
+            anim.SetFloat(strHeightAnim, timeValue/dropTime);
+            timeValue += Time.deltaTime;
+            if(timeValue >= dropTime) { timeValue = dropTime; }
+            yield return null;
+        }
+        anim.SetTrigger(strDroppedAnim);
+        yield return null;
     }
 }
