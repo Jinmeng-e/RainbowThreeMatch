@@ -45,7 +45,6 @@ public class ColorHelper : MonoBehaviour
 
     public Color GetColor(int index)
     {
-        Debug.Log(index);
         if(Game.instance.MaxColorCount < index)
         {
             index -= Game.instance.MaxColorCount;

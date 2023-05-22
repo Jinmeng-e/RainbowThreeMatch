@@ -14,7 +14,6 @@ public class Block : MonoBehaviour
     [SerializeField] string strHeightAnim = "height";
     [SerializeField] string strDroppedAnim = "dropped";
     [SerializeField] string strPopAnim = "pop";
-    [SerializeField] float dropTime = 1f;
     [SerializeField] Image icon;
     [SerializeField] TextMeshProUGUI txt;// 임시 
     bool isVerticalMove = false;
@@ -76,6 +75,7 @@ public class Block : MonoBehaviour
 
         if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
         if (icon != null) { icon.color = this.color; }
+        DebugText(data.colorIndex);
     }
     internal void Pop()
     {
@@ -98,7 +98,7 @@ public class Block : MonoBehaviour
     }
     public void Show(int height)
     {
-        Debug.Log($"[Block] : Show : {gameObject.name} ,HEIGHT:: {height}");
+        //Debug.Log($"[Block] : Show : {gameObject.name} ,HEIGHT:: {height}");
         if(anim == null)
         {
             anim = GetComponent<Animator>();
@@ -113,6 +113,7 @@ public class Block : MonoBehaviour
     {
         // 1 - 7  // 0.875 - 0.125
         // set height
+        var dropTime = Game.instance.DropTime;
         var HValue = (float)(8 - height) * 0.125f;
         anim.SetFloat(strHeightAnim, HValue);
         yield return null;
@@ -130,7 +131,7 @@ public class Block : MonoBehaviour
 
         // animation
         float timeValue = HValue * dropTime;
-        Debug.Log($"[Block] : HEIGHT :: {height} :: HVALUE :: {HValue} :: timevalue {timeValue}");
+        //Debug.Log($"[Block] : HEIGHT :: {height} :: HVALUE :: {HValue} :: timevalue {timeValue}");
 
         while (dropTime > timeValue)
         {

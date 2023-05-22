@@ -11,6 +11,12 @@ public class BlockData
     public int dropHeight;
 }
 [System.Serializable]
+public class ScoreData
+{
+    public int count;
+    public int score;
+}
+[System.Serializable]
 public class HBlocks
 {
     public int index;
@@ -79,12 +85,42 @@ public class Game : MonoBehaviour
     public static Game instance;
     public int MaxColorCount => grade + 3;
     [SerializeField] Image screen;
+    [SerializeField] GameObject alphaScreen;
+    [SerializeField] GameObject objGameOver;
+
     [SerializeField] int grade;
+    [SerializeField] int timeSeconds;
+    public float DropTime = 1f;
     int[,] boardData;
     public HBlocks[] blocks;
+    int score;
+    public System.Action<int> ShowScore;
+    public System.Action<int> ShowTimer;
+    public int Score
+    {
+        get { return score;}
+        set {
+            if (score == value) return;
+            score = value;
+            ShowScore?.Invoke(score);
+        }
+    }
+    public int TimeSeconds
+    {
+        get { return time; }
+        set
+        {
+            if (time == value) return;
+            time = value;
+            ShowTimer?.Invoke(time);
+        }
+    }
+    int time;
+    int maxHeight;
 
     private void Awake()
     {
+        score = 0;
         if(instance == null)
         {
             instance = this;
@@ -102,21 +138,23 @@ public class Game : MonoBehaviour
             blocks[i].Init(i);
         }
     }
-    IEnumerator Start()
+    void Start()
     {
-        //FillData();
-        yield return new WaitUntil(() => ColorHelper.Instance.IsColorFilled);
-        InitData();
-        yield return null;
-        screen.gameObject.SetActive(false);
+        alphaScreen.SetActive(true);
+        OnClickRetry();
     }
     public void Check((int,int) block)
     {
         Debug.Log($"[Game] : CHECK BLACK :: {block.Item1}, {block.Item2}");
 
+        alphaScreen.SetActive(true);
         if (CheckMatch(block))
         {
             StartCoroutine(IEPop());
+        }
+        else
+        {
+            alphaScreen.SetActive(false);
         }
     }
     public void CheckTest()
@@ -133,6 +171,11 @@ public class Game : MonoBehaviour
 
         FillData();
     }
+    public void OnClickRetry()
+    {
+        StartCoroutine(IEStartGame());
+    }
+    
     void ChangeColorTest()
     {
         Debug.Log($"[GAME] : ChangeColor ::::::::::");
@@ -376,7 +419,6 @@ public class Game : MonoBehaviour
 
     bool CheckMatch((int,int) blockIndex)
     {
-
         bool isMatched = false;
 
         // Check vertical matches
@@ -401,6 +443,7 @@ public class Game : MonoBehaviour
             {
                 boardData[item.Item1, item.Item2] = 0;
             }
+            AddScores(component.Count);
         }
 
 
@@ -422,8 +465,6 @@ public class Game : MonoBehaviour
 
         return isMatched;
     }
-
-    // Function to check if the current block is part of a connected group
     void DFS(int matchValue, int i, int j, ref List<(int, int)> component)
     {
         if (i < 0 || i >= 5 || j < 0 || j >= 7 || boardData[i, j] <= 0 || component.Contains((i, j)) || boardData[i, j] != matchValue)
@@ -439,8 +480,6 @@ public class Game : MonoBehaviour
         DFS(matchValue, i, j - 1, ref component);
         DFS(matchValue, i, j + 1, ref component);
     }
-
-
     void FillData()
     {
         Debug.Log("[Game] : FillData");
@@ -487,13 +526,18 @@ public class Game : MonoBehaviour
                 block.dropHeight = dropCount;
                 data[j] = block;
 
+                if (maxHeight < dropCount) { maxHeight = dropCount; }
                 Debug.Log($"FILL: {i}, {j}: {boardData[i, j]} :: {dropCount}");
             }
 
             blocks[i].FillData(data);
         }
-    }
 
+        if(maxHeight > 0)
+        {
+            StartCoroutine(IEDrop(maxHeight));
+        }
+    }
     void InitData()
     {
         Debug.Log("[GAME] : InitData()");
@@ -517,8 +561,61 @@ public class Game : MonoBehaviour
             }
             blocks[i].FillData(data);
         }
+
+        StartCoroutine(IEDrop(maxHeight));
+    }
+    void AddScores(int count)
+    {
+
+        var value = count - 3;
+        if(value < 0) { return; }
+        var added = 0;
+        for (int i = value; i > 0; --i)
+        {
+            added += value;
+        }
+        
+        Score = score + 10 + added;
+        Debug.Log($"[GAME] : Current Added Score : Count '{count}' :: AddedScore :: {10 + added}");
+    }
+    IEnumerator IEStartGame()
+    {
+        Debug.Log("IEStartGame()");
+
+        yield return new WaitUntil(() => ColorHelper.Instance.IsColorFilled);
+        Debug.Log("IEStartGame()");
+        maxHeight = 7;
+        InitData();
+        yield return null;
+        Debug.Log("IEStartGame()");
+        screen.gameObject.SetActive(false);
+        objGameOver.SetActive(false);
+        TimeSeconds = timeSeconds;
+        Score = 0;
+        yield return StartCoroutine(IETimer());
     }
 
+    IEnumerator IEDrop(int height)
+    {
+        // 1 - 7  // 0.875 - 0.125
+        // set height
+        var HValue = (float)(8 - height) * 0.125f;
+
+        // animation
+        float timeValue = HValue * DropTime;
+        //Debug.Log($"[Block] : HEIGHT :: {height} :: HVALUE :: {HValue} :: timevalue {timeValue}");
+
+        while (DropTime > timeValue)
+        {
+            timeValue += Time.deltaTime;
+            if (timeValue >= DropTime) { timeValue = DropTime; }
+            yield return null;
+        }
+
+        maxHeight = 0;
+        alphaScreen.SetActive(false);
+        yield return null;
+    }
     IEnumerator IEPop()
     {
         yield return null;
@@ -527,6 +624,16 @@ public class Game : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         FillData();
-
+    }
+    IEnumerator IETimer()
+    {
+        Debug.Log($"IETimer() {TimeSeconds}");
+        while (TimeSeconds > 0)
+        {
+            yield return new WaitForSeconds(1f);
+            TimeSeconds--;
+            Debug.Log($"Remain :: {TimeSeconds}");
+        }
+        objGameOver.SetActive(true);
     }
 }
