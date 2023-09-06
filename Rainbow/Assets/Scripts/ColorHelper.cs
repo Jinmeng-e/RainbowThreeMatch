@@ -17,6 +17,10 @@ public class ColorHelper : MonoBehaviour
     static ColorHelper instance;
     public bool IsColorFilled => colors.Count >= Game.instance.MaxColorCount;
 
+    [SerializeField] Sprite[] sprites;
+
+
+
     private void Awake()
     {
         if(instance == null)
@@ -50,6 +54,14 @@ public class ColorHelper : MonoBehaviour
             index -= Game.instance.MaxColorCount;
         }
         return colors[index];
+    }
+    public Sprite GetSprite(int index)
+    {
+        if(Game.instance.MaxColorCount < index)
+        {
+            index -= Game.instance.MaxColorCount;
+        }
+        return sprites[index];
     }
     public int GetColorIndex(int index)
     {

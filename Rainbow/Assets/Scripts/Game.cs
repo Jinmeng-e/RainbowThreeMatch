@@ -25,7 +25,8 @@ public class HBlocks
     public void Init(int index)
     {
         this.index = index;
-        for(int i = 0; i < blocks.Length; ++i)
+        var yCount = PositionHelper.instance.YCount;
+        for (int i = 0; i < yCount; ++i)
         {
             var y = i;
             blocks[i].SetPosition(index,y);
@@ -33,7 +34,8 @@ public class HBlocks
     }
     public void FillData(BlockData[] data)
     {
-        for(int i = 0; i < blocks.Length;++i)
+        var yCount = PositionHelper.instance.YCount;
+        for (int i = 0; i < yCount;++i)
         {
             var index = data[i].colorIndex;
             var height = data[i].dropHeight;
@@ -54,12 +56,14 @@ public class HBlocks
     }
     internal void ChangeColor(int[] data)
     {
-        for (int i = 0; i < blocks.Length; ++i)
+        var yCount = PositionHelper.instance.YCount;
+        for (int i = 0; i < yCount; ++i)
         {
             if (data[i] != 0 && blocks[i].colorIndex != data[i])
             {
                 blocks[i].InitColorData(data[i]);
-                blocks[i].ChangeColor();
+                //blocks[i].ChangeColor();
+                blocks[i].ChangeSprite();
             }
         }
     }
@@ -67,7 +71,8 @@ public class HBlocks
     //debug
     public void CheckTest(int[] data)
     {
-        for(int i = 0; i < blocks.Length; ++i)
+        var yCount = PositionHelper.instance.YCount;
+        for (int i = 0; i < yCount; ++i)
         {
             if (data[i] == 0)
             {
@@ -120,15 +125,17 @@ public class Game : MonoBehaviour
 
     private void Awake()
     {
+        var xCount = PositionHelper.instance.XCount;
+        var yCount = PositionHelper.instance.YCount;
         score = 0;
         if(instance == null)
         {
             instance = this;
         }
-        boardData = new int[5, 7];
-        for(int i = 0; i < 5; ++i)
+        boardData = new int[xCount, yCount];
+        for(int i = 0; i < xCount; ++i)
         {
-            for (int j = 0; j < 7; ++j)
+            for (int j = 0; j < yCount; ++j)
             {
                 boardData[i, j] = 0;
             }
@@ -179,11 +186,15 @@ public class Game : MonoBehaviour
     void ChangeColorTest()
     {
         Debug.Log($"[GAME] : ChangeColor ::::::::::");
+
+
+        var xCount = PositionHelper.instance.XCount;
+        var yCount = PositionHelper.instance.YCount;
         var changed = new List<string>();
-        for(var i = 0; i < 5; ++i)
+        for(var i = 0; i < xCount; ++i)
         {
             var x = i;
-            for (var j = 0; j < 7; ++j)
+            for (var j = 0; j < yCount; ++j)
             {
                 var y = j;
 
@@ -229,9 +240,9 @@ public class Game : MonoBehaviour
             }
         }
 
-        for (var i = 0; i < 5; ++i)
+        for (var i = 0; i < xCount; ++i)
         {
-            var data = new int[7];
+            var data = new int[yCount];
             for (var j = 6; j >= 0; --j)
             {
                 data[j] = boardData[i, j];
@@ -241,12 +252,14 @@ public class Game : MonoBehaviour
     }
     void ChangeColor()
     {
+        var xCount = PositionHelper.instance.XCount;
+        var yCount = PositionHelper.instance.YCount;
         Debug.Log($"[GAME] : ChangeColor ::::::::::");
         var changed = new List<string>();
-        for (var i = 0; i < 5; ++i)
+        for (var i = 0; i < xCount; ++i)
         {
             var x = i;
-            for (var j = 0; j < 7; ++j)
+            for (var j = 0; j < yCount; ++j)
             {
                 var y = j;
 
@@ -261,7 +274,7 @@ public class Game : MonoBehaviour
                             boardData[x - 1, y] = ColorHelper.Instance.GetColorIndex(boardData[x - 1, y] + 1);
                         }
                     }
-                    if (x < 4 && boardData[x + 1, y] != 0)
+                    if (x < xCount-1 && boardData[x + 1, y] != 0)
                     {
                         if (!changed.Contains($"{x + 1}{y}"))
                         {
@@ -279,7 +292,7 @@ public class Game : MonoBehaviour
                             boardData[x, y - 1] = ColorHelper.Instance.GetColorIndex(boardData[x, y - 1] + 1);
                         }
                     }
-                    if (y < 6 && boardData[x, y + 1] != 0)
+                    if (y < yCount-1 && boardData[x, y + 1] != 0)
                     {
                         if (!changed.Contains($"{x}{y + 1}"))
                         {
@@ -292,10 +305,10 @@ public class Game : MonoBehaviour
             }
         }
 
-        for (var i = 0; i < 5; ++i)
+        for (var i = 0; i < xCount; ++i)
         {
-            var data = new int[7];
-            for (var j = 6; j >= 0; --j)
+            var data = new int[yCount];
+            for (var j = yCount-1; j >= 0; --j)
             {
                 data[j] = boardData[i, j];
             }
@@ -305,15 +318,17 @@ public class Game : MonoBehaviour
 
     bool CheckMatch()
     {
+        var xCount = PositionHelper.instance.XCount;
+        var yCount = PositionHelper.instance.YCount;
         bool isMatched = false;
 
         // Check vertical matches
 
-        var temp = new int[5,7];
+        var temp = new int[xCount,yCount];
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < xCount; i++)
         {
-            for (int j = 0; j < 7; j++)
+            for (int j = 0; j < yCount; j++)
             {
                 temp[i,j] = boardData[i, j];
             }
@@ -321,9 +336,9 @@ public class Game : MonoBehaviour
 
         List<List<(int, int)>> connectedComponents = new List<List<(int, int)>>();
 
-        for (int i = 0; i < 5; ++i)
+        for (int i = 0; i < xCount; ++i)
         {
-            for (int j = 0; j < 7; ++j)
+            for (int j = 0; j < yCount; ++j)
             {
                 if (boardData[i, j] != 0)
                 {
@@ -348,11 +363,11 @@ public class Game : MonoBehaviour
         }
 
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < xCount; i++)
         {
-            BlockData[] data = new BlockData[7];
+            BlockData[] data = new BlockData[yCount];
 
-            for (int j = 6; j >= 0; j--)
+            for (int j = yCount-1; j >= 0; j--)
             {
                 BlockData block = new BlockData();
                 block.x = i;
@@ -419,15 +434,17 @@ public class Game : MonoBehaviour
 
     bool CheckMatch((int,int) blockIndex)
     {
+        var xCount = PositionHelper.instance.XCount;
+        var yCount = PositionHelper.instance.YCount;
         bool isMatched = false;
 
         // Check vertical matches
 
-        var temp = new int[5, 7];
+        var temp = new int[xCount, yCount];
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < xCount; i++)
         {
-            for (int j = 0; j < 7; j++)
+            for (int j = 0; j < yCount; j++)
             {
                 temp[i, j] = boardData[i, j];
             }
@@ -447,11 +464,11 @@ public class Game : MonoBehaviour
         }
 
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < xCount; i++)
         {
-            BlockData[] data = new BlockData[7];
+            BlockData[] data = new BlockData[yCount];
 
-            for (int j = 6; j >= 0; j--)
+            for (int j = yCount-1; j >= 0; j--)
             {
                 BlockData block = new BlockData();
                 block.x = i;
@@ -467,7 +484,9 @@ public class Game : MonoBehaviour
     }
     void DFS(int matchValue, int i, int j, ref List<(int, int)> component)
     {
-        if (i < 0 || i >= 5 || j < 0 || j >= 7 || boardData[i, j] <= 0 || component.Contains((i, j)) || boardData[i, j] != matchValue)
+        var xCount = PositionHelper.instance.XCount;
+        var yCount = PositionHelper.instance.YCount;
+        if (i < 0 || i >= xCount || j < 0 || j >= yCount || boardData[i, j] <= 0 || component.Contains((i, j)) || boardData[i, j] != matchValue)
         {
             return;
         }
@@ -483,13 +502,16 @@ public class Game : MonoBehaviour
     void FillData()
     {
         Debug.Log("[Game] : FillData");
+        var xCount = PositionHelper.instance.XCount;
+        var yCount = PositionHelper.instance.YCount;
+
         int maxColorCount = MaxColorCount;
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < xCount; i++)
         {
-            BlockData[] data = new BlockData[7];
+            BlockData[] data = new BlockData[yCount];
             var dropCount = 0;
-            for (int j = 6; j >= 0; j--)
+            for (int j = yCount-1; j >= 0; j--)
             {
                 if (boardData[i, j] == 0) // when empty
                 {
@@ -542,12 +564,15 @@ public class Game : MonoBehaviour
     {
         Debug.Log("[GAME] : InitData()");
 
-        var count = MaxColorCount;
-        for (var i = 0; i < 5; ++i)
-        {
-            var data = new BlockData[7];
+        var xCount = PositionHelper.instance.XCount;
+        var yCount = PositionHelper.instance.YCount;
 
-            for (var j = 6; j >= 0; --j)
+        var count = MaxColorCount;
+        for (var i = 0; i < xCount; ++i)
+        {
+            var data = new BlockData[yCount];
+
+            for (var j = yCount-1; j >= 0; --j)
             {
                 boardData[i, j] = Random.Range(1, count + 1);
 

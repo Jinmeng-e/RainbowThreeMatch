@@ -20,6 +20,7 @@ public class Block : MonoBehaviour
     float addedMoveValue = 0f;
     float lastMoveValue = 0f;
     public Color Color => color;
+    public Sprite Sprite => icon.sprite;
     public int colorIndex => data.colorIndex;
 
     Color color = Color.white;
@@ -67,15 +68,25 @@ public class Block : MonoBehaviour
         }
         data.colorIndex = index;
     }
-    public void ChangeColor()
+    //public void ChangeColor()
+    //{
+    //    data.colorIndex = ColorHelper.Instance.GetColorIndex(data.colorIndex);
+
+    //    this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
+
+    //    if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
+    //    if (icon != null) { icon.color = this.color; }
+    //    DebugText(data.colorIndex);
+    //}
+    public void ChangeSprite()
     {
         data.colorIndex = ColorHelper.Instance.GetColorIndex(data.colorIndex);
 
-        this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
-
-        if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
-        if (icon != null) { icon.color = this.color; }
-        DebugText(data.colorIndex);
+        if (icon == null)
+        {
+            icon = transform.GetChild(0).GetComponent<Image>();
+        }
+        icon.sprite = ColorHelper.Instance.GetSprite(data.colorIndex-1);
     }
     internal void Pop()
     {
@@ -121,10 +132,20 @@ public class Block : MonoBehaviour
         anim.SetTrigger(strDropAnim);
 
         // set color
+        //this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
+
+        //if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
+        //if (icon != null) { icon.color = this.color; }
+
+        // set color
         this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
 
-        if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
-        if (icon != null) { icon.color = this.color; }
+        if (icon == null)
+        {
+            icon = transform.GetChild(0).GetComponent<Image>();
+        }
+        icon.sprite = ColorHelper.Instance.GetSprite(data.colorIndex - 1);
+        //if (icon != null) { icon.color = this.color; }
 
         // set text
         DebugText(data.colorIndex);
