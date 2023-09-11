@@ -122,6 +122,7 @@ public class Game : MonoBehaviour
     }
     int time;
     int maxHeight;
+    bool addedTime = false;
 
     private void Awake()
     {
@@ -142,6 +143,7 @@ public class Game : MonoBehaviour
         }
         for(int i = 0; i < blocks.Length; ++i)
         {
+            Debug.Log($"{i}");
             blocks[i].Init(i);
         }
     }
@@ -157,11 +159,13 @@ public class Game : MonoBehaviour
         alphaScreen.SetActive(true);
         if (CheckMatch(block))
         {
+            addedTime = true;
             StartCoroutine(IEPop());
         }
         else
         {
             alphaScreen.SetActive(false);
+            addedTime = false;
         }
     }
     public void CheckTest()
@@ -182,7 +186,13 @@ public class Game : MonoBehaviour
     {
         StartCoroutine(IEStartGame());
     }
-    
+    public void CheckUpgrade(int score)
+    {
+        float tempGrade = score * 0.001f;
+        grade = Mathf.FloorToInt(tempGrade);
+    }
+
+
     void ChangeColorTest()
     {
         Debug.Log($"[GAME] : ChangeColor ::::::::::");
@@ -243,7 +253,7 @@ public class Game : MonoBehaviour
         for (var i = 0; i < xCount; ++i)
         {
             var data = new int[yCount];
-            for (var j = 6; j >= 0; --j)
+            for (var j = yCount-1; j >= 0; --j)
             {
                 data[j] = boardData[i, j];
             }
@@ -355,29 +365,26 @@ public class Game : MonoBehaviour
             if (component.Count >= 3)
             {
                 isMatched = true;
-                foreach (var item in component)
-                {
-                    boardData[item.Item1, item.Item2] = 0;
-                }
             }
         }
 
 
-        for (int i = 0; i < xCount; i++)
-        {
-            BlockData[] data = new BlockData[yCount];
+        //Pop
+        //for (int i = 0; i < xCount; i++)
+        //{
+        //    BlockData[] data = new BlockData[yCount];
 
-            for (int j = yCount-1; j >= 0; j--)
-            {
-                BlockData block = new BlockData();
-                block.x = i;
-                block.y = j;
-                block.colorIndex = boardData[i, j];
-                block.dropHeight = 0;
-                data[j] = block;
-            }
-            blocks[i].Pop(data);
-        }
+        //    for (int j = yCount-1; j >= 0; j--)
+        //    {
+        //        BlockData block = new BlockData();
+        //        block.x = i;
+        //        block.y = j;
+        //        block.colorIndex = boardData[i, j];
+        //        block.dropHeight = 0;
+        //        data[j] = block;
+        //    }
+        //    blocks[i].Pop(data);
+        //}
 
 
         // line matching
@@ -431,7 +438,6 @@ public class Game : MonoBehaviour
 
         return isMatched;
     }
-
     bool CheckMatch((int,int) blockIndex)
     {
         var xCount = PositionHelper.instance.XCount;
@@ -455,12 +461,21 @@ public class Game : MonoBehaviour
 
         if (component.Count >= 3)
         {
+            if (addedTime)
+            {
+                AddTimer(component.Count);
+            }
             isMatched = true;
+            addedTime = true;
             foreach (var item in component)
             {
                 boardData[item.Item1, item.Item2] = 0;
             }
             AddScores(component.Count);
+        }
+        else
+        {
+            addedTime = false;
         }
 
 
@@ -549,7 +564,6 @@ public class Game : MonoBehaviour
                 data[j] = block;
 
                 if (maxHeight < dropCount) { maxHeight = dropCount; }
-                Debug.Log($"FILL: {i}, {j}: {boardData[i, j]} :: {dropCount}");
             }
 
             blocks[i].FillData(data);
@@ -578,7 +592,6 @@ public class Game : MonoBehaviour
 
                 var block = new BlockData();
                 block.x = i;
-
                 block.y = j;
                 block.colorIndex = boardData[i, j];
                 block.dropHeight = 7;
@@ -591,7 +604,6 @@ public class Game : MonoBehaviour
     }
     void AddScores(int count)
     {
-
         var value = count - 3;
         if(value < 0) { return; }
         var added = 0;
@@ -601,30 +613,33 @@ public class Game : MonoBehaviour
         }
         
         Score = score + 10 + added;
+
         Debug.Log($"[GAME] : Current Added Score : Count '{count}' :: AddedScore :: {10 + added}");
+    }
+    void AddTimer(int count)
+    {
+        var value = count - 2;
+        TimeSeconds = timeSeconds > time + value ? time + value: timeSeconds;
     }
     IEnumerator IEStartGame()
     {
-        Debug.Log("IEStartGame()");
-
         yield return new WaitUntil(() => ColorHelper.Instance.IsColorFilled);
-        Debug.Log("IEStartGame()");
-        maxHeight = 7;
+
+        maxHeight = 9;
         InitData();
         yield return null;
-        Debug.Log("IEStartGame()");
+
         screen.gameObject.SetActive(false);
         objGameOver.SetActive(false);
         TimeSeconds = timeSeconds;
         Score = 0;
         yield return StartCoroutine(IETimer());
     }
-
     IEnumerator IEDrop(int height)
     {
-        // 1 - 7  // 0.875 - 0.125
+        // 1 - 9  // 0.9 - 0.1
         // set height
-        var HValue = (float)(8 - height) * 0.125f;
+        var HValue = (float)(10 - height) * 0.1f;
 
         // animation
         float timeValue = HValue * DropTime;
@@ -638,8 +653,18 @@ public class Game : MonoBehaviour
         }
 
         maxHeight = 0;
-        alphaScreen.SetActive(false);
+
         yield return null;
+
+        if (!CheckMatch())
+        {
+            yield return new WaitForSeconds(DropTime);
+            InitData();
+        }
+        else
+        {
+            alphaScreen.SetActive(false);
+        }
     }
     IEnumerator IEPop()
     {
@@ -647,6 +672,7 @@ public class Game : MonoBehaviour
 
         ChangeColor();
         yield return new WaitForSeconds(0.5f);
+        CheckUpgrade(score);
 
         FillData();
     }

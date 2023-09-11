@@ -81,6 +81,7 @@ public class Block : MonoBehaviour
     public void ChangeSprite()
     {
         data.colorIndex = ColorHelper.Instance.GetColorIndex(data.colorIndex);
+        this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
 
         if (icon == null)
         {
@@ -90,6 +91,8 @@ public class Block : MonoBehaviour
     }
     internal void Pop()
     {
+        Sfx.Instnace.Pop(transform.position, this.color);
+
         data.colorIndex = 0;
         anim.SetFloat(strHeightAnim, 0);
         anim.SetTrigger(strPopAnim);
@@ -110,12 +113,13 @@ public class Block : MonoBehaviour
     public void Show(int height)
     {
         //Debug.Log($"[Block] : Show : {gameObject.name} ,HEIGHT:: {height}");
-        if(anim == null)
+        if (anim == null)
         {
             anim = GetComponent<Animator>();
         }
         if(anim != null && height > 0)
         {
+            anim.SetFloat(strHeightAnim, 1);
             StartCoroutine(IEDrop(height));
         }
     }
@@ -125,9 +129,9 @@ public class Block : MonoBehaviour
         // 1 - 7  // 0.875 - 0.125
         // set height
         var dropTime = Game.instance.DropTime;
-        var HValue = (float)(8 - height) * 0.125f;
+        var HValue = (float)(10 - height) * 0.1f;
         anim.SetFloat(strHeightAnim, HValue);
-        yield return null;
+        //yield return null;
 
         anim.SetTrigger(strDropAnim);
 
@@ -161,7 +165,8 @@ public class Block : MonoBehaviour
             if(timeValue >= dropTime) { timeValue = dropTime; }
             yield return null;
         }
-        anim.SetTrigger(strDroppedAnim);
+        anim.SetFloat(strHeightAnim, 1);
+        //anim.SetTrigger(strDroppedAnim);
         yield return null;
     }
 }
