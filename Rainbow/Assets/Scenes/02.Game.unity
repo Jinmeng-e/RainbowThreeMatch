@@ -267,7 +267,6 @@ GameObject:
   m_Component:
   - component: {fileID: 42903176}
   - component: {fileID: 42903181}
-  - component: {fileID: 42903180}
   - component: {fileID: 42903179}
   - component: {fileID: 42903178}
   - component: {fileID: 42903177}
@@ -380,27 +379,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &42903180
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 42903175}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &42903181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,14 +391,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &48207477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,7 +1337,6 @@ GameObject:
   m_Component:
   - component: {fileID: 159933922}
   - component: {fileID: 159933927}
-  - component: {fileID: 159933926}
   - component: {fileID: 159933925}
   - component: {fileID: 159933924}
   - component: {fileID: 159933923}
@@ -1477,27 +1449,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &159933926
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 159933921}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &159933927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1510,14 +1461,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &174026609
 GameObject:
   m_ObjectHideFlags: 0
@@ -2233,7 +2179,6 @@ GameObject:
   m_Component:
   - component: {fileID: 239057367}
   - component: {fileID: 239057372}
-  - component: {fileID: 239057371}
   - component: {fileID: 239057370}
   - component: {fileID: 239057369}
   - component: {fileID: 239057368}
@@ -2346,27 +2291,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &239057371
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239057366}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &239057372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2379,14 +2303,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &306632239
 GameObject:
   m_ObjectHideFlags: 0
@@ -2699,7 +2618,6 @@ GameObject:
   m_Component:
   - component: {fileID: 330185752}
   - component: {fileID: 330185757}
-  - component: {fileID: 330185756}
   - component: {fileID: 330185755}
   - component: {fileID: 330185754}
   - component: {fileID: 330185753}
@@ -2812,27 +2730,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &330185756
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330185751}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &330185757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2845,14 +2742,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &331842121
 GameObject:
   m_ObjectHideFlags: 0
@@ -3173,7 +3065,6 @@ GameObject:
   m_Component:
   - component: {fileID: 378803652}
   - component: {fileID: 378803657}
-  - component: {fileID: 378803656}
   - component: {fileID: 378803655}
   - component: {fileID: 378803654}
   - component: {fileID: 378803653}
@@ -3286,27 +3177,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &378803656
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378803651}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &378803657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3319,14 +3189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &391227678
 GameObject:
   m_ObjectHideFlags: 0
@@ -3930,7 +3795,6 @@ GameObject:
   m_Component:
   - component: {fileID: 447252450}
   - component: {fileID: 447252455}
-  - component: {fileID: 447252454}
   - component: {fileID: 447252453}
   - component: {fileID: 447252452}
   - component: {fileID: 447252451}
@@ -4043,27 +3907,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &447252454
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447252449}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &447252455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4076,14 +3919,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &468040591
 GameObject:
   m_ObjectHideFlags: 0
@@ -4380,7 +4218,6 @@ GameObject:
   m_Component:
   - component: {fileID: 507630810}
   - component: {fileID: 507630815}
-  - component: {fileID: 507630814}
   - component: {fileID: 507630813}
   - component: {fileID: 507630812}
   - component: {fileID: 507630811}
@@ -4493,27 +4330,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &507630814
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507630809}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &507630815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4526,14 +4342,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &514310338
 GameObject:
   m_ObjectHideFlags: 0
@@ -4544,7 +4355,6 @@ GameObject:
   m_Component:
   - component: {fileID: 514310339}
   - component: {fileID: 514310344}
-  - component: {fileID: 514310343}
   - component: {fileID: 514310342}
   - component: {fileID: 514310341}
   - component: {fileID: 514310340}
@@ -4657,27 +4467,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &514310343
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514310338}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &514310344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4690,14 +4479,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &514985217
 GameObject:
   m_ObjectHideFlags: 0
@@ -4708,7 +4492,6 @@ GameObject:
   m_Component:
   - component: {fileID: 514985218}
   - component: {fileID: 514985223}
-  - component: {fileID: 514985222}
   - component: {fileID: 514985221}
   - component: {fileID: 514985220}
   - component: {fileID: 514985219}
@@ -4821,27 +4604,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &514985222
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514985217}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &514985223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4854,14 +4616,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &517191845
 GameObject:
   m_ObjectHideFlags: 0
@@ -4948,7 +4705,6 @@ GameObject:
   m_Component:
   - component: {fileID: 558494246}
   - component: {fileID: 558494241}
-  - component: {fileID: 558494245}
   - component: {fileID: 558494244}
   - component: {fileID: 558494243}
   - component: {fileID: 558494242}
@@ -4971,14 +4727,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!114 &558494242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5061,27 +4812,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &558494245
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558494240}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!224 &558494246
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5380,7 +5110,6 @@ GameObject:
   m_Component:
   - component: {fileID: 593282317}
   - component: {fileID: 593282322}
-  - component: {fileID: 593282321}
   - component: {fileID: 593282320}
   - component: {fileID: 593282319}
   - component: {fileID: 593282318}
@@ -5493,27 +5222,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &593282321
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593282316}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &593282322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5526,14 +5234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &607777748
 GameObject:
   m_ObjectHideFlags: 0
@@ -5544,7 +5247,6 @@ GameObject:
   m_Component:
   - component: {fileID: 607777749}
   - component: {fileID: 607777754}
-  - component: {fileID: 607777753}
   - component: {fileID: 607777752}
   - component: {fileID: 607777751}
   - component: {fileID: 607777750}
@@ -5657,27 +5359,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &607777753
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 607777748}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &607777754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5690,14 +5371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &660686715
 GameObject:
   m_ObjectHideFlags: 0
@@ -6186,7 +5862,6 @@ GameObject:
   m_Component:
   - component: {fileID: 721031971}
   - component: {fileID: 721031976}
-  - component: {fileID: 721031975}
   - component: {fileID: 721031974}
   - component: {fileID: 721031973}
   - component: {fileID: 721031972}
@@ -6299,27 +5974,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &721031975
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 721031970}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &721031976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6332,14 +5986,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &725163558
 GameObject:
   m_ObjectHideFlags: 0
@@ -7426,7 +7075,6 @@ GameObject:
   m_Component:
   - component: {fileID: 782066408}
   - component: {fileID: 782066413}
-  - component: {fileID: 782066412}
   - component: {fileID: 782066411}
   - component: {fileID: 782066410}
   - component: {fileID: 782066409}
@@ -7539,27 +7187,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &782066412
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 782066407}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &782066413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7572,14 +7199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &788823542
 GameObject:
   m_ObjectHideFlags: 0
@@ -8251,7 +7873,6 @@ GameObject:
   m_Component:
   - component: {fileID: 869923849}
   - component: {fileID: 869923854}
-  - component: {fileID: 869923853}
   - component: {fileID: 869923852}
   - component: {fileID: 869923851}
   - component: {fileID: 869923850}
@@ -8364,27 +7985,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &869923853
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869923848}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &869923854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8397,14 +7997,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &899056429
 GameObject:
   m_ObjectHideFlags: 0
@@ -8491,7 +8086,6 @@ GameObject:
   m_Component:
   - component: {fileID: 913194157}
   - component: {fileID: 913194162}
-  - component: {fileID: 913194161}
   - component: {fileID: 913194160}
   - component: {fileID: 913194159}
   - component: {fileID: 913194158}
@@ -8604,27 +8198,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &913194161
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 913194156}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &913194162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8637,14 +8210,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &913757167
 GameObject:
   m_ObjectHideFlags: 0
@@ -8731,7 +8299,6 @@ GameObject:
   m_Component:
   - component: {fileID: 920710783}
   - component: {fileID: 920710788}
-  - component: {fileID: 920710787}
   - component: {fileID: 920710786}
   - component: {fileID: 920710785}
   - component: {fileID: 920710784}
@@ -8844,27 +8411,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &920710787
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920710782}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &920710788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8877,14 +8423,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &980812960
 GameObject:
   m_ObjectHideFlags: 0
@@ -8895,7 +8436,6 @@ GameObject:
   m_Component:
   - component: {fileID: 980812961}
   - component: {fileID: 980812966}
-  - component: {fileID: 980812965}
   - component: {fileID: 980812964}
   - component: {fileID: 980812963}
   - component: {fileID: 980812962}
@@ -9008,27 +8548,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &980812965
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980812960}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &980812966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9041,14 +8560,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &984128480
 GameObject:
   m_ObjectHideFlags: 0
@@ -9059,7 +8573,6 @@ GameObject:
   m_Component:
   - component: {fileID: 984128481}
   - component: {fileID: 984128486}
-  - component: {fileID: 984128485}
   - component: {fileID: 984128484}
   - component: {fileID: 984128483}
   - component: {fileID: 984128482}
@@ -9172,27 +8685,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &984128485
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 984128480}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &984128486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9205,14 +8697,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &992327733
 GameObject:
   m_ObjectHideFlags: 0
@@ -9491,7 +8978,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1021787719}
   - component: {fileID: 1021787724}
-  - component: {fileID: 1021787723}
   - component: {fileID: 1021787722}
   - component: {fileID: 1021787721}
   - component: {fileID: 1021787720}
@@ -9604,27 +9090,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1021787723
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021787718}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1021787724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9637,14 +9102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1043702971
 GameObject:
   m_ObjectHideFlags: 0
@@ -9655,7 +9115,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1043702972}
   - component: {fileID: 1043702977}
-  - component: {fileID: 1043702976}
   - component: {fileID: 1043702975}
   - component: {fileID: 1043702974}
   - component: {fileID: 1043702973}
@@ -9768,27 +9227,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1043702976
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1043702971}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1043702977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9801,14 +9239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1054898232
 GameObject:
   m_ObjectHideFlags: 0
@@ -9953,7 +9386,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1054955862}
   - component: {fileID: 1054955863}
-  - component: {fileID: 1054955864}
   - component: {fileID: 1054955867}
   - component: {fileID: 1054955866}
   - component: {fileID: 1054955865}
@@ -9996,35 +9428,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
---- !u!95 &1054955864
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1054955861}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  anim: {fileID: 0}
 --- !u!114 &1054955865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10327,7 +9733,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1127600358}
   - component: {fileID: 1127600363}
-  - component: {fileID: 1127600362}
   - component: {fileID: 1127600361}
   - component: {fileID: 1127600360}
   - component: {fileID: 1127600359}
@@ -10440,27 +9845,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1127600362
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127600357}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1127600363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10473,14 +9857,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1142676239
 GameObject:
   m_ObjectHideFlags: 0
@@ -10567,7 +9946,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1149317066}
   - component: {fileID: 1149317071}
-  - component: {fileID: 1149317070}
   - component: {fileID: 1149317069}
   - component: {fileID: 1149317068}
   - component: {fileID: 1149317067}
@@ -10680,27 +10058,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1149317070
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1149317065}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1149317071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10713,14 +10070,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1153534227
 GameObject:
   m_ObjectHideFlags: 0
@@ -10999,7 +10351,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1155807974}
   - component: {fileID: 1155807969}
-  - component: {fileID: 1155807973}
   - component: {fileID: 1155807972}
   - component: {fileID: 1155807971}
   - component: {fileID: 1155807970}
@@ -11022,14 +10373,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!114 &1155807970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11112,27 +10458,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1155807973
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1155807968}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!224 &1155807974
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11373,7 +10698,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1180989755}
   - component: {fileID: 1180989756}
-  - component: {fileID: 1180989757}
   - component: {fileID: 1180989760}
   - component: {fileID: 1180989759}
   - component: {fileID: 1180989758}
@@ -11416,35 +10740,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
---- !u!95 &1180989757
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1180989754}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  anim: {fileID: 0}
 --- !u!114 &1180989758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11671,7 +10969,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1207240646}
   - component: {fileID: 1207240651}
-  - component: {fileID: 1207240650}
   - component: {fileID: 1207240649}
   - component: {fileID: 1207240648}
   - component: {fileID: 1207240647}
@@ -11784,27 +11081,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1207240650
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207240645}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1207240651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11817,14 +11093,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1217233681
 GameObject:
   m_ObjectHideFlags: 0
@@ -11987,7 +11258,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1255718212}
   - component: {fileID: 1255718217}
-  - component: {fileID: 1255718216}
   - component: {fileID: 1255718215}
   - component: {fileID: 1255718214}
   - component: {fileID: 1255718213}
@@ -12100,27 +11370,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1255718216
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255718211}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1255718217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12133,14 +11382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1267812885
 GameObject:
   m_ObjectHideFlags: 0
@@ -12303,7 +11547,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1291397105}
   - component: {fileID: 1291397110}
-  - component: {fileID: 1291397109}
   - component: {fileID: 1291397108}
   - component: {fileID: 1291397107}
   - component: {fileID: 1291397106}
@@ -12416,27 +11659,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1291397109
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291397104}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1291397110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12449,14 +11671,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1302282485
 GameObject:
   m_ObjectHideFlags: 0
@@ -12467,7 +11684,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1302282486}
   - component: {fileID: 1302282491}
-  - component: {fileID: 1302282490}
   - component: {fileID: 1302282489}
   - component: {fileID: 1302282488}
   - component: {fileID: 1302282487}
@@ -12580,27 +11796,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1302282490
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1302282485}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1302282491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12613,14 +11808,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1308052104
 GameObject:
   m_ObjectHideFlags: 0
@@ -12993,7 +12183,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1392888093}
   - component: {fileID: 1392888098}
-  - component: {fileID: 1392888097}
   - component: {fileID: 1392888096}
   - component: {fileID: 1392888095}
   - component: {fileID: 1392888094}
@@ -13106,27 +12295,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1392888097
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392888092}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1392888098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13139,14 +12307,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1398922490
 GameObject:
   m_ObjectHideFlags: 0
@@ -13665,7 +12828,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1450702618}
   - component: {fileID: 1450702623}
-  - component: {fileID: 1450702622}
   - component: {fileID: 1450702621}
   - component: {fileID: 1450702620}
   - component: {fileID: 1450702619}
@@ -13778,27 +12940,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1450702622
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450702617}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1450702623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13811,14 +12952,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1452855787
 GameObject:
   m_ObjectHideFlags: 0
@@ -14509,7 +13645,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1499998603}
   - component: {fileID: 1499998608}
-  - component: {fileID: 1499998607}
   - component: {fileID: 1499998606}
   - component: {fileID: 1499998605}
   - component: {fileID: 1499998604}
@@ -14622,27 +13757,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1499998607
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499998602}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1499998608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14655,14 +13769,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1586888027
 GameObject:
   m_ObjectHideFlags: 0
@@ -14758,6 +13867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44837be666d3f4bc99676cfbc9d556fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxGrade: 5
   screen: {fileID: 1890289025}
   alphaScreen: {fileID: 134201662}
   objGameOver: {fileID: 1864685750}
@@ -14964,7 +14074,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1635721103}
   - component: {fileID: 1635721108}
-  - component: {fileID: 1635721107}
   - component: {fileID: 1635721106}
   - component: {fileID: 1635721105}
   - component: {fileID: 1635721104}
@@ -15077,27 +14186,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1635721107
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635721102}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1635721108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15110,14 +14198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1645463959
 GameObject:
   m_ObjectHideFlags: 0
@@ -15128,7 +14211,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1645463960}
   - component: {fileID: 1645463965}
-  - component: {fileID: 1645463964}
   - component: {fileID: 1645463963}
   - component: {fileID: 1645463962}
   - component: {fileID: 1645463961}
@@ -15241,27 +14323,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1645463964
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645463959}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1645463965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15274,14 +14335,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1659132036
 GameObject:
   m_ObjectHideFlags: 0
@@ -15596,7 +14652,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1712974496}
   - component: {fileID: 1712974491}
-  - component: {fileID: 1712974495}
   - component: {fileID: 1712974494}
   - component: {fileID: 1712974493}
   - component: {fileID: 1712974492}
@@ -15619,14 +14674,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!114 &1712974492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15709,27 +14759,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1712974495
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712974490}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!224 &1712974496
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16207,7 +15236,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1782231975}
   - component: {fileID: 1782231980}
-  - component: {fileID: 1782231979}
   - component: {fileID: 1782231978}
   - component: {fileID: 1782231977}
   - component: {fileID: 1782231976}
@@ -16320,27 +15348,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1782231979
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782231974}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1782231980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16353,14 +15360,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1786514155
 GameObject:
   m_ObjectHideFlags: 0
@@ -16581,7 +15583,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1839588104}
   - component: {fileID: 1839588109}
-  - component: {fileID: 1839588108}
   - component: {fileID: 1839588107}
   - component: {fileID: 1839588106}
   - component: {fileID: 1839588105}
@@ -16694,27 +15695,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1839588108
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1839588103}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1839588109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16727,14 +15707,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1848860614
 GameObject:
   m_ObjectHideFlags: 0
@@ -16745,7 +15720,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1848860615}
   - component: {fileID: 1848860620}
-  - component: {fileID: 1848860619}
   - component: {fileID: 1848860618}
   - component: {fileID: 1848860617}
   - component: {fileID: 1848860616}
@@ -16858,27 +15832,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1848860619
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1848860614}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1848860620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16891,14 +15844,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1860324729
 GameObject:
   m_ObjectHideFlags: 0
@@ -17194,7 +16142,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1866701442}
   - component: {fileID: 1866701447}
-  - component: {fileID: 1866701446}
   - component: {fileID: 1866701445}
   - component: {fileID: 1866701444}
   - component: {fileID: 1866701443}
@@ -17307,27 +16254,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1866701446
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866701441}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1866701447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17340,14 +16266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1886623145
 GameObject:
   m_ObjectHideFlags: 0
@@ -17358,7 +16279,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1886623146}
   - component: {fileID: 1886623151}
-  - component: {fileID: 1886623150}
   - component: {fileID: 1886623149}
   - component: {fileID: 1886623148}
   - component: {fileID: 1886623147}
@@ -17471,27 +16391,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1886623150
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886623145}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1886623151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17504,14 +16403,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1889257826
 GameObject:
   m_ObjectHideFlags: 0
@@ -17878,7 +16772,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1909710737}
   - component: {fileID: 1909710742}
-  - component: {fileID: 1909710741}
   - component: {fileID: 1909710740}
   - component: {fileID: 1909710739}
   - component: {fileID: 1909710738}
@@ -17991,27 +16884,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1909710741
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909710736}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1909710742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18024,14 +16896,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1910992482
 GameObject:
   m_ObjectHideFlags: 0
@@ -18194,7 +17061,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1958992677}
   - component: {fileID: 1958992682}
-  - component: {fileID: 1958992681}
   - component: {fileID: 1958992680}
   - component: {fileID: 1958992679}
   - component: {fileID: 1958992678}
@@ -18307,27 +17173,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1958992681
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1958992676}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1958992682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18340,14 +17185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1989008708
 GameObject:
   m_ObjectHideFlags: 0
@@ -18492,7 +17332,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1990455841}
   - component: {fileID: 1990455846}
-  - component: {fileID: 1990455845}
   - component: {fileID: 1990455844}
   - component: {fileID: 1990455843}
   - component: {fileID: 1990455842}
@@ -18605,27 +17444,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1990455845
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1990455840}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1990455846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18638,14 +17456,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &2041360637
 GameObject:
   m_ObjectHideFlags: 0
@@ -18656,7 +17469,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2041360638}
   - component: {fileID: 2041360643}
-  - component: {fileID: 2041360642}
   - component: {fileID: 2041360641}
   - component: {fileID: 2041360640}
   - component: {fileID: 2041360639}
@@ -18769,27 +17581,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &2041360642
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041360637}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ce9198cf4cea4b29b552f61c04456c7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2041360643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18802,14 +17593,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fc10f381aaa470190402b350c394f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
   btn: {fileID: 0}
-  strDropAnim: drop
-  strHeightAnim: height
-  strDroppedAnim: dropped
-  strPopAnim: pop
   icon: {fileID: 0}
-  txt: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &2049315941
 GameObject:
   m_ObjectHideFlags: 0
