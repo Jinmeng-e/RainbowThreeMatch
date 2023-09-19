@@ -1,21 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
 
 public class Block : MonoBehaviour
 {
-
-    [SerializeField] Animator anim;
     [SerializeField] Button btn;
-    [SerializeField] string strDropAnim = "drop";
-    [SerializeField] string strHeightAnim = "height";
-    [SerializeField] string strDroppedAnim = "dropped";
-    [SerializeField] string strPopAnim = "pop";
     [SerializeField] Image icon;
-    [SerializeField] TextMeshProUGUI txt;// 임시 
+    [SerializeField] AnimationBlock anim;
     bool isVerticalMove = false;
     float addedMoveValue = 0f;
     float lastMoveValue = 0f;
@@ -26,22 +17,15 @@ public class Block : MonoBehaviour
     Color color = Color.white;
     BlockData data;
     bool isLocked = false;
-    float height = 1f;
-    void DebugText(int index)
-    {
-        if (txt == null) { txt = GetComponentInChildren<TextMeshProUGUI>(); }
-        if (txt != null)
-        {
-            txt.text = index + "";
-            txt.color = Color.black;
-        }
-    }
+    int height = 0;
 
 
     private void Awake()
     {
         btn = GetComponent<Button>();
         btn.onClick.AddListener(onClick);
+        icon = transform.GetChild(0).GetComponent<Image>();
+        anim = icon.gameObject.AddComponent<AnimationBlock>();
     }
 
 
@@ -69,18 +53,9 @@ public class Block : MonoBehaviour
         }
         data.colorIndex = index;
     }
-    //public void ChangeColor()
-    //{
-    //    data.colorIndex = ColorHelper.Instance.GetColorIndex(data.colorIndex);
-
-    //    this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
-
-    //    if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
-    //    if (icon != null) { icon.color = this.color; }
-    //    DebugText(data.colorIndex);
-    //}
     public void ChangeSprite()
     {
+        anim.ChangeBlock();
         data.colorIndex = ColorHelper.Instance.GetColorIndex(data.colorIndex);
         this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
 
@@ -90,103 +65,44 @@ public class Block : MonoBehaviour
         }
         icon.sprite = ColorHelper.Instance.GetSprite(data.colorIndex-1);
     }
-    internal void Pop()
+    public void Pop()
     {
-        Sfx.Instnace.Pop(transform.position, this.color);
-
         data.colorIndex = 0;
-        anim.SetFloat(strHeightAnim, 0);
-        anim.SetTrigger(strPopAnim);
-    }
-
-    //Debug
-    public void TestCheck()
-    {
-        if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
-        if (icon != null) { icon.color = Color.black; }
-        txt.color = Color.white;
-    }
-    public void TestChangeCheck()
-    {
-        if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
-        if (icon != null) { icon.color = Color.gray; }
+        anim.Pop(this.color);
     }
     public void Show(int height)
     {
         //Debug.Log($"[Block] : Show : {gameObject.name} ,HEIGHT:: {height}");
-        if (anim == null)
+
+        this.height = height;
+
+        this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
+
+        if (icon == null)
         {
-            anim = GetComponent<Animator>();
+            icon = transform.GetChild(0).GetComponent<Image>();
         }
-        if(anim != null && height > 0)
-        {
-            this.height = (float)(10 - height) * 0.1f;
+        icon.sprite = ColorHelper.Instance.GetSprite(data.colorIndex - 1);
 
-            this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
-
-            if (icon == null)
-            {
-                icon = transform.GetChild(0).GetComponent<Image>();
-            }
-            icon.sprite = ColorHelper.Instance.GetSprite(data.colorIndex - 1);
-
-            anim.SetTrigger(strDropAnim);
-            anim.SetFloat(strHeightAnim, this.height);
-            //StartCoroutine(IEDrop(height));
-        }
+        // 올려서 애니메이션 시작
+        anim.SetDrop(this.height);
+        anim.Drop(this.height);
     }
     public bool CheckDropEnd()
     {
-        if(anim.GetFloat(strHeightAnim) >= 1f) return true;
-        height += Time.deltaTime;
-        if (height >= 1f) height = 1f;
-        anim.SetFloat(strHeightAnim, height);
-
-        return height >= 1f;
+        Debug.Log($"CheckDropEnd :: {transform.parent.parent.name} {transform.parent.name} {anim.PosY}");
+        return anim.PosY <= 0;
     }
 
-    //IEnumerator IEDrop(int height)
-    //{
-    //    // 1 - 9  // 0.875 - 0.125
-    //    // set height
-    //    var dropTime = Game.instance.DropTime;
-    //    var HValue = (float)(10-height) * 0.1f;
-    //    anim.SetFloat(strHeightAnim, HValue);
-    //    anim.SetTrigger(strDropAnim);
 
-    //    // set color
-    //    //this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
-
-    //    //if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
-    //    //if (icon != null) { icon.color = this.color; }
-
-    //    // set color
-    //    this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
-
-    //    if (icon == null)
-    //    {
-    //        icon = transform.GetChild(0).GetComponent<Image>();
-    //    }
-    //    icon.sprite = ColorHelper.Instance.GetSprite(data.colorIndex - 1);
-    //    //if (icon != null) { icon.color = this.color; }
-
-    //    // set text
-    //    DebugText(data.colorIndex);
-
-    //    // animation
-    //    float timeValue = HValue;
-    //    //Debug.Log($"[Block] : HEIGHT :: {height} :: HVALUE :: {HValue} :: timevalue {timeValue}");
-
-    //    while (dropTime > timeValue)
-    //    {
-    //        anim.SetFloat(strHeightAnim, timeValue/dropTime);
-    //        timeValue += Time.deltaTime;
-    //        if(timeValue >= dropTime) { timeValue = dropTime; }
-    //        yield return null;
-    //    }
-    //    anim.SetFloat(strHeightAnim, 1);
-    //    //anim.SetTrigger(strDroppedAnim);
-    //    yield return null;
-    //}
-
+    //Debug
+    public void TestCheck()
+    {
+        icon.color = Color.black;
+    }
+    public void TestChangeCheck()
+    {
+        icon.color = Color.gray;
+        anim.Pop(this.color);
+    }
 }

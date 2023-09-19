@@ -80,8 +80,6 @@ public class HBlocks
         }
         return isDropped;
     }
-
-    //debug
     public void CheckTest(int[] data)
     {
         var yCount = PositionHelper.instance.YCount;
@@ -91,7 +89,7 @@ public class HBlocks
             {
                 blocks[i].TestCheck();
             }
-            else if(blocks[i].colorIndex != data[i])
+            else if (blocks[i].colorIndex != data[i])
             {
                 blocks[i].TestChangeCheck();
             }
@@ -102,6 +100,7 @@ public class Game : MonoBehaviour
 {
     public static Game instance;
     public int MaxColorCount => grade + 3;
+    [SerializeField] int maxGrade = 5;
     [SerializeField] Image screen;
     [SerializeField] GameObject alphaScreen;
     [SerializeField] GameObject objGameOver;
@@ -202,7 +201,8 @@ public class Game : MonoBehaviour
     public void CheckUpgrade(int score)
     {
         float tempGrade = score * 0.001f;
-        grade = Mathf.FloorToInt(tempGrade);
+        
+        grade = grade >= maxGrade ? maxGrade : Mathf.FloorToInt(tempGrade);
     }
 
 
@@ -214,34 +214,34 @@ public class Game : MonoBehaviour
         var xCount = PositionHelper.instance.XCount;
         var yCount = PositionHelper.instance.YCount;
         var changed = new List<string>();
-        for(var i = 0; i < xCount; ++i)
+        for (var i = 0; i < xCount; ++i)
         {
             var x = i;
             for (var j = 0; j < yCount; ++j)
             {
                 var y = j;
 
-                if(boardData[x,y] == 0)
+                if (boardData[x, y] == 0)
                 {
-                    if(x > 0 && boardData[x - 1, y] != 0)
+                    if (x > 0 && boardData[x - 1, y] != 0)
                     {
-                        if(!changed.Contains($"{x - 1}{y}"))
+                        if (!changed.Contains($"{x - 1}{y}"))
                         {
                             Debug.Log($"CHANGED :: {x - 1} : {y}");
                             changed.Add($"{x - 1}{y}");
                             boardData[x - 1, y] = ColorHelper.Instance.GetColorIndex(boardData[x - 1, y] + 1);
                         }
                     }
-                    if(x < 4 && boardData[x + 1, y] != 0)
+                    if (x < 4 && boardData[x + 1, y] != 0)
                     {
                         if (!changed.Contains($"{x + 1}{y}"))
                         {
-                            Debug.Log($"CHANGED :: {x+1} : {y}");
+                            Debug.Log($"CHANGED :: {x + 1} : {y}");
                             changed.Add($"{x + 1}{y}");
                             boardData[x + 1, y] = ColorHelper.Instance.GetColorIndex(boardData[x + 1, y] + 1);
                         }
                     }
-                    if(y > 0 && boardData[x , y - 1] != 0)
+                    if (y > 0 && boardData[x, y - 1] != 0)
                     {
                         if (!changed.Contains($"{x}{y - 1}"))
                         {
@@ -250,7 +250,7 @@ public class Game : MonoBehaviour
                             boardData[x, y - 1] = ColorHelper.Instance.GetColorIndex(boardData[x, y - 1] + 1);
                         }
                     }
-                    if(y < 6 && boardData[x, y + 1] != 0)
+                    if (y < 6 && boardData[x, y + 1] != 0)
                     {
                         if (!changed.Contains($"{x}{y + 1}"))
                         {
@@ -266,7 +266,7 @@ public class Game : MonoBehaviour
         for (var i = 0; i < xCount; ++i)
         {
             var data = new int[yCount];
-            for (var j = yCount-1; j >= 0; --j)
+            for (var j = yCount - 1; j >= 0; --j)
             {
                 data[j] = boardData[i, j];
             }
@@ -698,7 +698,7 @@ public class Game : MonoBehaviour
         yield return null;
 
         ChangeColor();
-        yield return new WaitForSeconds(0.5f);
+        yield return null;
         CheckUpgrade(score);
 
         FillData();
