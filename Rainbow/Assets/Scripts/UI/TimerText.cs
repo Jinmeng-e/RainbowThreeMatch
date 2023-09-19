@@ -16,7 +16,7 @@ public class TimerText : MonoBehaviour
 
     public void ShowTimer(int time)
     {
-        Debug.Log($"Show Timer : {time}");
+        //Debug.Log($"Show Timer : {time}");
         text.text = strTimer + time;
     }
 }

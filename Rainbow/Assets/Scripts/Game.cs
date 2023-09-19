@@ -67,6 +67,19 @@ public class HBlocks
             }
         }
     }
+    public bool isDropped()
+    {
+        bool isDropped = true;
+        foreach (Block b in blocks)
+        {
+            bool dropped = b.CheckDropEnd();
+            if (!dropped)
+            {
+                isDropped = false;
+            }
+        }
+        return isDropped;
+    }
 
     //debug
     public void CheckTest(int[] data)
@@ -279,7 +292,7 @@ public class Game : MonoBehaviour
                     {
                         if (!changed.Contains($"{x - 1}{y}"))
                         {
-                            Debug.Log($"CHANGED :: {x - 1} : {y}");
+                            //Debug.Log($"CHANGED :: {x - 1} : {y}");
                             changed.Add($"{x - 1}{y}");
                             boardData[x - 1, y] = ColorHelper.Instance.GetColorIndex(boardData[x - 1, y] + 1);
                         }
@@ -288,7 +301,7 @@ public class Game : MonoBehaviour
                     {
                         if (!changed.Contains($"{x + 1}{y}"))
                         {
-                            Debug.Log($"CHANGED :: {x + 1} : {y}");
+                            //Debug.Log($"CHANGED :: {x + 1} : {y}");
                             changed.Add($"{x + 1}{y}");
                             boardData[x + 1, y] = ColorHelper.Instance.GetColorIndex(boardData[x + 1, y] + 1);
                         }
@@ -297,7 +310,7 @@ public class Game : MonoBehaviour
                     {
                         if (!changed.Contains($"{x}{y - 1}"))
                         {
-                            Debug.Log($"CHANGED :: {x} : {y - 1}");
+                            //Debug.Log($"CHANGED :: {x} : {y - 1}");
                             changed.Add($"{x}{y - 1}");
                             boardData[x, y - 1] = ColorHelper.Instance.GetColorIndex(boardData[x, y - 1] + 1);
                         }
@@ -306,7 +319,7 @@ public class Game : MonoBehaviour
                     {
                         if (!changed.Contains($"{x}{y + 1}"))
                         {
-                            Debug.Log($"CHANGED :: {x} : {y + 1}");
+                            //Debug.Log($"CHANGED :: {x} : {y + 1}");
                             changed.Add($"{x}{y + 1}");
                             boardData[x, y + 1] = ColorHelper.Instance.GetColorIndex(boardData[x, y + 1] + 1);
                         }
@@ -594,7 +607,7 @@ public class Game : MonoBehaviour
                 block.x = i;
                 block.y = j;
                 block.colorIndex = boardData[i, j];
-                block.dropHeight = 7;
+                block.dropHeight = 9;
                 data[j] = block;
             }
             blocks[i].FillData(data);
@@ -614,7 +627,7 @@ public class Game : MonoBehaviour
         
         Score = score + 10 + added;
 
-        Debug.Log($"[GAME] : Current Added Score : Count '{count}' :: AddedScore :: {10 + added}");
+        //Debug.Log($"[GAME] : Current Added Score : Count '{count}' :: AddedScore :: {10 + added}");
     }
     void AddTimer(int count)
     {
@@ -637,28 +650,42 @@ public class Game : MonoBehaviour
     }
     IEnumerator IEDrop(int height)
     {
-        // 1 - 9  // 0.9 - 0.1
-        // set height
-        var HValue = (float)(10 - height) * 0.1f;
-
-        // animation
-        float timeValue = HValue * DropTime;
-        //Debug.Log($"[Block] : HEIGHT :: {height} :: HVALUE :: {HValue} :: timevalue {timeValue}");
-
-        while (DropTime > timeValue)
+        var drop = true;
+        while (drop)
         {
-            timeValue += Time.deltaTime;
-            if (timeValue >= DropTime) { timeValue = DropTime; }
+            drop = false;
+            foreach(HBlocks b in blocks)
+            {
+                if (!b.isDropped())
+                {
+                    drop = true;
+                }
+            }
             yield return null;
         }
 
-        maxHeight = 0;
+        //// 1 - 9  // 0.9 - 0.1
+        //// set height
+        //var HValue = (float)(10 - height) * 0.1f;
 
-        yield return null;
+        //// animation
+        //float timeValue = HValue * DropTime;
+        ////Debug.Log($"[Block] : HEIGHT :: {height} :: HVALUE :: {HValue} :: timevalue {timeValue}");
+
+        //while (DropTime > timeValue)
+        //{
+        //    timeValue += Time.deltaTime;
+        //    if (timeValue >= DropTime) { timeValue = DropTime; }
+        //    yield return null;
+        //}
+
+        //maxHeight = 0;
+
+        //yield return null;
 
         if (!CheckMatch())
         {
-            yield return new WaitForSeconds(DropTime);
+            //yield return new WaitForSeconds(DropTime);
             InitData();
         }
         else

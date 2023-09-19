@@ -26,6 +26,7 @@ public class Block : MonoBehaviour
     Color color = Color.white;
     BlockData data;
     bool isLocked = false;
+    float height = 1f;
     void DebugText(int index)
     {
         if (txt == null) { txt = GetComponentInChildren<TextMeshProUGUI>(); }
@@ -119,54 +120,73 @@ public class Block : MonoBehaviour
         }
         if(anim != null && height > 0)
         {
-            anim.SetFloat(strHeightAnim, 1);
-            StartCoroutine(IEDrop(height));
+            this.height = (float)(10 - height) * 0.1f;
+
+            this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
+
+            if (icon == null)
+            {
+                icon = transform.GetChild(0).GetComponent<Image>();
+            }
+            icon.sprite = ColorHelper.Instance.GetSprite(data.colorIndex - 1);
+
+            anim.SetTrigger(strDropAnim);
+            anim.SetFloat(strHeightAnim, this.height);
+            //StartCoroutine(IEDrop(height));
         }
     }
-
-    IEnumerator IEDrop(int height)
+    public bool CheckDropEnd()
     {
-        // 1 - 7  // 0.875 - 0.125
-        // set height
-        var dropTime = Game.instance.DropTime;
-        var HValue = (float)(10 - height) * 0.1f;
-        anim.SetFloat(strHeightAnim, HValue);
-        //yield return null;
+        if(anim.GetFloat(strHeightAnim) >= 1f) return true;
+        height += Time.deltaTime;
+        if (height >= 1f) height = 1f;
+        anim.SetFloat(strHeightAnim, height);
 
-        anim.SetTrigger(strDropAnim);
-
-        // set color
-        //this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
-
-        //if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
-        //if (icon != null) { icon.color = this.color; }
-
-        // set color
-        this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
-
-        if (icon == null)
-        {
-            icon = transform.GetChild(0).GetComponent<Image>();
-        }
-        icon.sprite = ColorHelper.Instance.GetSprite(data.colorIndex - 1);
-        //if (icon != null) { icon.color = this.color; }
-
-        // set text
-        DebugText(data.colorIndex);
-
-        // animation
-        float timeValue = HValue * dropTime;
-        //Debug.Log($"[Block] : HEIGHT :: {height} :: HVALUE :: {HValue} :: timevalue {timeValue}");
-
-        while (dropTime > timeValue)
-        {
-            anim.SetFloat(strHeightAnim, timeValue/dropTime);
-            timeValue += Time.deltaTime;
-            if(timeValue >= dropTime) { timeValue = dropTime; }
-            yield return null;
-        }
-        anim.SetFloat(strHeightAnim, 1);
-        //anim.SetTrigger(strDroppedAnim);
-        yield return null;
+        return height >= 1f;
     }
+
+    //IEnumerator IEDrop(int height)
+    //{
+    //    // 1 - 9  // 0.875 - 0.125
+    //    // set height
+    //    var dropTime = Game.instance.DropTime;
+    //    var HValue = (float)(10-height) * 0.1f;
+    //    anim.SetFloat(strHeightAnim, HValue);
+    //    anim.SetTrigger(strDropAnim);
+
+    //    // set color
+    //    //this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
+
+    //    //if (icon == null) { icon = transform.GetChild(0).GetComponent<Image>(); }
+    //    //if (icon != null) { icon.color = this.color; }
+
+    //    // set color
+    //    this.color = ColorHelper.Instance.GetColor(data.colorIndex - 1);
+
+    //    if (icon == null)
+    //    {
+    //        icon = transform.GetChild(0).GetComponent<Image>();
+    //    }
+    //    icon.sprite = ColorHelper.Instance.GetSprite(data.colorIndex - 1);
+    //    //if (icon != null) { icon.color = this.color; }
+
+    //    // set text
+    //    DebugText(data.colorIndex);
+
+    //    // animation
+    //    float timeValue = HValue;
+    //    //Debug.Log($"[Block] : HEIGHT :: {height} :: HVALUE :: {HValue} :: timevalue {timeValue}");
+
+    //    while (dropTime > timeValue)
+    //    {
+    //        anim.SetFloat(strHeightAnim, timeValue/dropTime);
+    //        timeValue += Time.deltaTime;
+    //        if(timeValue >= dropTime) { timeValue = dropTime; }
+    //        yield return null;
+    //    }
+    //    anim.SetFloat(strHeightAnim, 1);
+    //    //anim.SetTrigger(strDroppedAnim);
+    //    yield return null;
+    //}
+
 }
