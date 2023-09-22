@@ -104,13 +104,13 @@ public class Game : MonoBehaviour
     [SerializeField] Image screen;
     [SerializeField] GameObject alphaScreen;
     [SerializeField] GameObject objGameOver;
-
-    [SerializeField] int grade;
+    [SerializeField] int minGrade = 0;
     [SerializeField] int timeSeconds;
     public float DropTime = 1f;
     int[,] boardData;
     public HBlocks[] blocks;
     int score;
+    int grade;
     public System.Action<int> ShowScore;
     public System.Action<int> ShowTimer;
     public int Score
@@ -140,6 +140,7 @@ public class Game : MonoBehaviour
     {
         var xCount = PositionHelper.instance.XCount;
         var yCount = PositionHelper.instance.YCount;
+        grade = minGrade;
         score = 0;
         if(instance == null)
         {
@@ -200,9 +201,10 @@ public class Game : MonoBehaviour
     }
     public void CheckUpgrade(int score)
     {
-        float tempGrade = score * 0.001f;
-        
-        grade = grade >= maxGrade ? maxGrade : Mathf.FloorToInt(tempGrade);
+        float tempGrade = (score * 0.001f) + minGrade;
+
+        grade = Mathf.FloorToInt(tempGrade) >= maxGrade ?
+            maxGrade - 1 : Mathf.FloorToInt(tempGrade);
     }
 
 
@@ -638,6 +640,8 @@ public class Game : MonoBehaviour
     {
         yield return new WaitUntil(() => ColorHelper.Instance.IsColorFilled);
 
+        Score = 0;
+        grade = minGrade;
         maxHeight = 9;
         InitData();
         yield return null;
@@ -645,7 +649,6 @@ public class Game : MonoBehaviour
         screen.gameObject.SetActive(false);
         objGameOver.SetActive(false);
         TimeSeconds = timeSeconds;
-        Score = 0;
         yield return StartCoroutine(IETimer());
     }
     IEnumerator IEDrop(int height)

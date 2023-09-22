@@ -13871,7 +13871,7 @@ MonoBehaviour:
   screen: {fileID: 1890289025}
   alphaScreen: {fileID: 134201662}
   objGameOver: {fileID: 1864685750}
-  grade: 0
+  minGrade: 2
   timeSeconds: 60
   DropTime: 1
   blocks:

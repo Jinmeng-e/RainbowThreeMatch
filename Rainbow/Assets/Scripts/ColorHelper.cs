@@ -2,12 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorSet
-{
-    int index;
-    Color color;
-}
-
 public class ColorHelper : MonoBehaviour
 {
     public static ColorHelper Instance => instance;
