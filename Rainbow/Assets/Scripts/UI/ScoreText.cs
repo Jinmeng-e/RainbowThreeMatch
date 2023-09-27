@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -11,12 +9,12 @@ public class ScoreText : MonoBehaviour
     private void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
-        text.text = "strScore : 0";
+        text.text = $"{strScore}0";
         Game.instance.ShowScore += ShowScore;
     }
 
     public void ShowScore(int score)
     {
-        text.text = strScore + score;
+        text.text = $"{strScore}{score}";
     }
 }

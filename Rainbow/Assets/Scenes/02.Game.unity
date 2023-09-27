@@ -10340,7 +10340,7 @@ GameObject:
   - component: {fileID: 1488678344}
   - component: {fileID: 1488678347}
   - component: {fileID: 1488678346}
-  - component: {fileID: 1488678345}
+  - component: {fileID: 1488678348}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -10367,18 +10367,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1488678345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1488678343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0baf95418ee141b9a56d5ec1c22d2ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1488678346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10476,6 +10464,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488678343}
   m_CullTransparentMesh: 1
+--- !u!114 &1488678348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488678343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bec7724393ab433dafe8c3f39868d37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1499998602
 GameObject:
   m_ObjectHideFlags: 0
@@ -10850,7 +10850,7 @@ MonoBehaviour:
   screen: {fileID: 1890289025}
   alphaScreen: {fileID: 134201662}
   objGameOver: {fileID: 1864685750}
-  minGrade: 2
+  minGrade: 0
   timeSeconds: 60
   DropTime: 1
   blocks:

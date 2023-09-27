@@ -112,6 +112,7 @@ public class Game : MonoBehaviour
     int score;
     int grade;
     public System.Action<int> ShowScore;
+    public System.Action<int> ShowGrade;
     public System.Action<int> ShowTimer;
     public int Score
     {
@@ -120,6 +121,16 @@ public class Game : MonoBehaviour
             if (score == value) return;
             score = value;
             ShowScore?.Invoke(score);
+        }
+    }
+    public int Grade
+    {
+        get { return grade; }
+        set
+        {
+            if (grade == value) return;
+            grade = value;
+            ShowGrade?.Invoke(grade);
         }
     }
     public int TimeSeconds
@@ -140,7 +151,7 @@ public class Game : MonoBehaviour
     {
         var xCount = PositionHelper.instance.XCount;
         var yCount = PositionHelper.instance.YCount;
-        grade = minGrade;
+        Grade = minGrade;
         score = 0;
         if(instance == null)
         {
@@ -203,7 +214,7 @@ public class Game : MonoBehaviour
     {
         float tempGrade = (score * 0.001f) + minGrade;
 
-        grade = Mathf.FloorToInt(tempGrade) >= maxGrade ?
+        Grade = Mathf.FloorToInt(tempGrade) >= maxGrade ?
             maxGrade - 1 : Mathf.FloorToInt(tempGrade);
     }
 
@@ -628,7 +639,6 @@ public class Game : MonoBehaviour
         }
         
         Score = score + 10 + added;
-
         //Debug.Log($"[GAME] : Current Added Score : Count '{count}' :: AddedScore :: {10 + added}");
     }
     void AddTimer(int count)
@@ -641,7 +651,7 @@ public class Game : MonoBehaviour
         yield return new WaitUntil(() => ColorHelper.Instance.IsColorFilled);
 
         Score = 0;
-        grade = minGrade;
+        Grade = minGrade;
         maxHeight = 9;
         InitData();
         yield return null;
